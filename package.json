@@ -1,0 +1,46 @@
+{
+  "bugs": {
+    "url": "https://github.com/libp2p/go-libp2p-routing"
+  },
+  "gx": {
+    "dvcsimport": "github.com/libp2p/go-libp2p-routing",
+    "goversion": "1.5.2"
+  },
+  "gxDependencies": [
+    {
+      "author": "whyrusleeping",
+      "hash": "QmVoi5es8D5fNHZDqoW6DgDAEPEV5hQp8GBz161vZXiwpQ",
+      "name": "go-libp2p-crypto",
+      "version": "1.0.4"
+    },
+    {
+      "author": "whyrusleeping",
+      "hash": "QmWXjJo15p4pzT7cayEwZi2sWgJqLnGDof6ZGMh9xBgU1p",
+      "name": "go-libp2p-peer",
+      "version": "2.0.4"
+    },
+    {
+      "author": "jbenet",
+      "hash": "QmX6DhWrpBB5NtadXmPSXYNdVvuLfJXoFNMvUMoVvP5UJa",
+      "name": "go-context",
+      "version": "0.0.0"
+    },
+    {
+      "author": "whyrusleeping",
+      "hash": "QmXhU58jbgCbuAvo3Eq6VXg67yGSNArpzJwk3g54NuYVfx",
+      "name": "go-key",
+      "version": "1.0.1"
+    },
+    {
+      "author": "whyrusleeping",
+      "hash": "QmSZi9ygLohBUGyHMqE5N6eToPwqcg7bZQTULeVLFu7Q6d",
+      "name": "go-libp2p-peerstore",
+      "version": "1.2.2"
+    }
+  ],
+  "gxVersion": "0.4.0",
+  "language": "go",
+  "license": "MIT",
+  "name": "go-libp2p-routing",
+  "version": "1.0.0"
+}
