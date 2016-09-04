@@ -27,20 +27,20 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "QmXhU58jbgCbuAvo3Eq6VXg67yGSNArpzJwk3g54NuYVfx",
+      "hash": "Qmce4Y4zg3sYr7xKM5UueS67vhNni6EeWgCRnb7MbLJMew",
       "name": "go-key",
-      "version": "1.0.1"
+      "version": "1.0.2"
     },
     {
       "author": "whyrusleeping",
-      "hash": "QmSZi9ygLohBUGyHMqE5N6eToPwqcg7bZQTULeVLFu7Q6d",
+      "hash": "QmXhhVSpXMUjpf9XgQDyePxug2iHm8ZvZD99aA9N6kuqMN",
       "name": "go-libp2p-peerstore",
-      "version": "1.2.2"
+      "version": "1.2.3"
     }
   ],
   "gxVersion": "0.4.0",
   "language": "go",
   "license": "MIT",
   "name": "go-libp2p-routing",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
