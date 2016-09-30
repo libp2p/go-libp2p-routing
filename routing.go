@@ -4,7 +4,7 @@ package routing
 import (
 	"errors"
 
-	key "github.com/ipfs/go-key"
+	cid "github.com/ipfs/go-cid"
 	ci "github.com/ipfs/go-libp2p-crypto"
 	peer "github.com/ipfs/go-libp2p-peer"
 	pstore "github.com/ipfs/go-libp2p-peerstore"
@@ -18,10 +18,10 @@ var ErrNotFound = errors.New("routing: not found")
 // information about who has what content.
 type ContentRouting interface {
 	// Announce that this node can provide value for given key
-	Provide(context.Context, key.Key) error
+	Provide(context.Context, *cid.Cid) error
 
 	// Search for peers who are able to provide a given key
-	FindProvidersAsync(context.Context, key.Key, int) <-chan pstore.PeerInfo
+	FindProvidersAsync(context.Context, *cid.Cid, int) <-chan pstore.PeerInfo
 }
 
 // PeerRouting is a way to find information about certain peers.
@@ -38,10 +38,10 @@ type ValueStore interface {
 	// Basic Put/Get
 
 	// PutValue adds value corresponding to given Key.
-	PutValue(context.Context, key.Key, []byte) error
+	PutValue(context.Context, string, []byte) error
 
 	// GetValue searches for the value corresponding to given Key.
-	GetValue(context.Context, key.Key) ([]byte, error)
+	GetValue(context.Context, string) ([]byte, error)
 
 	// GetValues searches for values corresponding to given Key.
 	//
@@ -53,7 +53,7 @@ type ValueStore interface {
 	// the network for the first value it finds otherwise.
 	// As a result, a value of '1' is mostly useful for cases where the record
 	// in question has only one valid value (such as public keys)
-	GetValues(c context.Context, k key.Key, count int) ([]RecvdVal, error)
+	GetValues(c context.Context, k string, count int) ([]RecvdVal, error)
 }
 
 // IpfsRouting is the combination of different routing types that ipfs
@@ -84,8 +84,8 @@ type PubKeyFetcher interface {
 
 // KeyForPublicKey returns the key used to retrieve public keys
 // from the dht.
-func KeyForPublicKey(id peer.ID) key.Key {
-	return key.Key("/pk/" + string(id))
+func KeyForPublicKey(id peer.ID) string {
+	return "/pk/" + string(id)
 }
 
 func GetPublicKey(r ValueStore, ctx context.Context, pkhash []byte) (ci.PubKey, error) {
@@ -93,7 +93,7 @@ func GetPublicKey(r ValueStore, ctx context.Context, pkhash []byte) (ci.PubKey, 
 		// If we have a DHT as our routing system, use optimized fetcher
 		return dht.GetPublicKey(ctx, peer.ID(pkhash))
 	} else {
-		key := key.Key("/pk/" + string(pkhash))
+		key := "/pk/" + string(pkhash)
 		pkval, err := r.GetValue(ctx, key)
 		if err != nil {
 			return nil, err
