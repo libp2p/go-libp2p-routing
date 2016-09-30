@@ -27,15 +27,15 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "Qmce4Y4zg3sYr7xKM5UueS67vhNni6EeWgCRnb7MbLJMew",
-      "name": "go-key",
-      "version": "1.0.2"
-    },
-    {
-      "author": "whyrusleeping",
       "hash": "QmYkwVGkwoPbMVQEbf6LonZg4SsCxGP3H7PBEtdNCNRyxD",
       "name": "go-libp2p-peerstore",
       "version": "1.2.5"
+    },
+    {
+      "author": "whyrusleeping",
+      "hash": "QmcW7CcRA5kMdqNBRpif7e8y9yvVRmJG1uurMvea8TY2SM",
+      "name": "go-cid",
+      "version": "0.5.0"
     }
   ],
   "gxVersion": "0.4.0",
