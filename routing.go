@@ -2,13 +2,13 @@
 package routing
 
 import (
+	"context"
 	"errors"
 
-	cid "github.com/ipfs/go-cid"
-	ci "github.com/ipfs/go-libp2p-crypto"
-	peer "github.com/ipfs/go-libp2p-peer"
-	pstore "github.com/ipfs/go-libp2p-peerstore"
-	context "golang.org/x/net/context"
+	ci "gx/ipfs/QmVoi5es8D5fNHZDqoW6DgDAEPEV5hQp8GBz161vZXiwpQ/go-libp2p-crypto"
+	peer "gx/ipfs/QmWXjJo15p4pzT7cayEwZi2sWgJqLnGDof6ZGMh9xBgU1p/go-libp2p-peer"
+	pstore "gx/ipfs/QmYkwVGkwoPbMVQEbf6LonZg4SsCxGP3H7PBEtdNCNRyxD/go-libp2p-peerstore"
+	cid "gx/ipfs/QmcW7CcRA5kMdqNBRpif7e8y9yvVRmJG1uurMvea8TY2SM/go-cid"
 )
 
 // ErrNotFound is returned when a search fails to find anything
