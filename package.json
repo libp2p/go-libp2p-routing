@@ -27,9 +27,9 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "QmUrECr5NauzkUaofvUnCFGjZ4Wevt76n79uv6BhEkuyn3",
+      "hash": "QmakyCk6Vnn16WEKjbkxieZmM2YLTzkFWizbmGowoYPjro",
       "name": "go-cid",
-      "version": "0.5.1"
+      "version": "0.5.2"
     }
   ],
   "gxVersion": "0.4.0",
@@ -37,6 +37,6 @@
   "license": "MIT",
   "name": "go-libp2p-routing",
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
-  "version": "2.1.0"
+  "version": "2.1.1"
 }
 
