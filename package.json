@@ -15,7 +15,7 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "QmU8iiXVwobZ366qAezD62VDxxnUe9Ss7K2skzYs7vy73B",
+      "hash": "QmekwEJM81TqzKzupMvK68hVNfBNvBengWkpc8nAw2bjBf",
       "name": "go-libp2p-peerstore",
       "version": "1.4.0"
     },
@@ -31,6 +31,6 @@
   "license": "MIT",
   "name": "go-libp2p-routing",
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
-  "version": "2.2.7"
+  "version": "2.2.8"
 }
 
