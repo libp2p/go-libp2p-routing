@@ -54,6 +54,21 @@ type ValueStore interface {
 	// As a result, a value of '1' is mostly useful for cases where the record
 	// in question has only one valid value (such as public keys)
 	GetValues(c context.Context, k string, count int) ([]RecvdVal, error)
+
+	// GetValues searches for values corresponding to given Key.
+	//
+	// Passing a negative value to the count argument, the search will not stop
+	// until the context is cancelled or timeouts
+	//
+	// Passing a value of '0' for the count argument will cause the
+	// routing interface to return values only from cached or local storage
+	// and return an error if no cached value is found.
+	//
+	// Passing a value of '1' will return a local value if found, and query
+	// the network for the first value it finds otherwise.
+	// As a result, a value of '1' is mostly useful for cases where the record
+	// in question has only one valid value (such as public keys)
+	GetValuesAsync(c context.Context, k string, count int) <-chan *RecvdVal
 }
 
 // IpfsRouting is the combination of different routing types that ipfs
