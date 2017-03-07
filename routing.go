@@ -89,8 +89,9 @@ type IpfsRouting interface {
 // RecvdVal represents a dht value record that has been received from a given peer
 // it is used to track peers with expired records in order to correct them.
 type RecvdVal struct {
-	From peer.ID
-	Val  []byte
+	Error error
+	From  peer.ID
+	Val   []byte
 }
 
 type PubKeyFetcher interface {
