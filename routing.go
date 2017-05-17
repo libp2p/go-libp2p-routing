@@ -17,8 +17,10 @@ var ErrNotFound = errors.New("routing: not found")
 // ContentRouting is a value provider layer of indirection. It is used to find
 // information about who has what content.
 type ContentRouting interface {
-	// Announce that this node can provide value for given key
-	Provide(context.Context, *cid.Cid) error
+	// Provide adds the given cid to the content routing system. If 'true' is
+	// passed, it also announces it, otherwise it is just kept in the local
+	// accounting of which objects are being provided.
+	Provide(context.Context, *cid.Cid, bool) error
 
 	// Search for peers who are able to provide a given key
 	FindProvidersAsync(context.Context, *cid.Cid, int) <-chan pstore.PeerInfo
