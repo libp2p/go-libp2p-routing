@@ -21,9 +21,9 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "QmYhQaCYEcaPPjxJX7YcPcVKkQfRy6sJ7B3XmGFk82XYdQ",
+      "hash": "QmNw61A6sJoXMeP37mJRtQZdNhj5e3FdjoTN3v4FyE96Gk",
       "name": "go-cid",
-      "version": "0.7.12"
+      "version": "0.7.15"
     }
   ],
   "gxVersion": "0.4.0",
