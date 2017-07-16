@@ -61,17 +61,20 @@ type ValueStore interface {
 	//SearchValue(context.Context, string, ...ropts.Option) (<-chan []byte, error)
 }
 
+// Bootstrap allows callers to hint to the routing system to get into a
+// Boostrapped state
+type BootstrapRouting interface {
+	Bootstrap(context.Context) error
+}
+
 // IpfsRouting is the combination of different routing types that ipfs
 // uses. It can be satisfied by a single item (such as a DHT) or multiple
 // different pieces that are more optimized to each task.
 type IpfsRouting interface {
+	BootstrapRouting
 	ContentRouting
 	PeerRouting
 	ValueStore
-
-	// Bootstrap allows callers to hint to the routing system to get into a
-	// Boostrapped state
-	Bootstrap(context.Context) error
 
 	// TODO expose io.Closer or plain-old Close error
 }
