@@ -24,6 +24,12 @@
       "hash": "QmTprEaAA2A9bst5XH7exuyi5KzNMK3SEDNN8rBDnKWcUS",
       "name": "go-cid",
       "version": "0.7.17"
+    },
+    {
+      "author": "whyrusleeping",
+      "hash": "QmXYjuNuxVzXKJCfWasQk1RqkhVLDM9jtUKhqc2WPQmFSB",
+      "name": "go-libp2p-peer",
+      "version": "2.2.0"
     }
   ],
   "gxVersion": "0.4.0",
