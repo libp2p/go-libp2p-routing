@@ -15,9 +15,9 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "QmeZVQzUrXqaszo24DAoHfGzcmCptN9JyngLkGAiEfk2x7",
+      "hash": "QmXauCuJzmzapetmC6W4TuDJLL1yFFrVzSHoWv8YdbmnxH",
       "name": "go-libp2p-peerstore",
-      "version": "1.4.14"
+      "version": "1.4.15"
     },
     {
       "author": "whyrusleeping",
@@ -27,9 +27,9 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "Qma7H6RW8wRrfZpNSXwxYGcd1E149s42FpWNpDNieSVrnU",
+      "hash": "QmZoWKhxUmZ2seW4BzX6fJkNR8hh9PsGModr7q171yq2SS",
       "name": "go-libp2p-peer",
-      "version": "2.2.2"
+      "version": "2.2.3"
     }
   ],
   "gxVersion": "0.4.0",
@@ -37,6 +37,6 @@
   "license": "MIT",
   "name": "go-libp2p-routing",
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
-  "version": "2.2.20"
+  "version": "2.2.21"
 }
 
