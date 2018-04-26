@@ -5,6 +5,8 @@ import (
 	"context"
 	"errors"
 
+	ropts "github.com/libp2p/go-libp2p-routing/options"
+
 	cid "github.com/ipfs/go-cid"
 	ci "github.com/libp2p/go-libp2p-crypto"
 	peer "github.com/libp2p/go-libp2p-peer"
@@ -13,6 +15,10 @@ import (
 
 // ErrNotFound is returned when a search fails to find anything
 var ErrNotFound = errors.New("routing: not found")
+
+// ErrNotSupported is returned when a search or put fails because the key type
+// isn't supported.
+var ErrNotSupported = errors.New("routing: namespace not supported")
 
 // ContentRouting is a value provider layer of indirection. It is used to find
 // information about who has what content.
@@ -36,26 +42,23 @@ type PeerRouting interface {
 	FindPeer(context.Context, peer.ID) (pstore.PeerInfo, error)
 }
 
+// ValueStore is a basic Put/Get interface.
 type ValueStore interface {
-	// Basic Put/Get
 
 	// PutValue adds value corresponding to given Key.
-	PutValue(context.Context, string, []byte) error
+	PutValue(context.Context, string, []byte, ...ropts.Option) error
 
 	// GetValue searches for the value corresponding to given Key.
-	GetValue(context.Context, string) ([]byte, error)
+	GetValue(context.Context, string, ...ropts.Option) ([]byte, error)
 
-	// GetValues searches for values corresponding to given Key.
+	// TODO
+	// SearchValue searches for better and better values from this value
+	// store corresponding to the given Key. Implementations may halt the
+	// search after a period of time or may continue searching indefinitely.
 	//
-	// Passing a value of '0' for the count argument will cause the
-	// routing interface to return values only from cached or local storage
-	// and return an error if no cached value is found.
-	//
-	// Passing a value of '1' will return a local value if found, and query
-	// the network for the first value it finds otherwise.
-	// As a result, a value of '1' is mostly useful for cases where the record
-	// in question has only one valid value (such as public keys)
-	GetValues(c context.Context, k string, count int) ([]RecvdVal, error)
+	// Useful when you want a result *now* but still want to hear about
+	// better/newer results.
+	//SearchValue(context.Context, string, ...ropts.Option) (<-chan []byte, error)
 }
 
 // IpfsRouting is the combination of different routing types that ipfs
@@ -71,13 +74,6 @@ type IpfsRouting interface {
 	Bootstrap(context.Context) error
 
 	// TODO expose io.Closer or plain-old Close error
-}
-
-// RecvdVal represents a dht value record that has been received from a given peer
-// it is used to track peers with expired records in order to correct them.
-type RecvdVal struct {
-	From peer.ID
-	Val  []byte
 }
 
 type PubKeyFetcher interface {
