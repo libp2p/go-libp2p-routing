@@ -1,0 +1,64 @@
+package routinghelpers
+
+import (
+	"context"
+	"strings"
+
+	routing "github.com/libp2p/go-libp2p-routing"
+	ropts "github.com/libp2p/go-libp2p-routing/options"
+
+	ci "github.com/libp2p/go-libp2p-crypto"
+	peer "github.com/libp2p/go-libp2p-peer"
+)
+
+// LimitedValueStore limits the internal value store to the given namespaces.
+type LimitedValueStore struct {
+	routing.ValueStore
+	Namespaces []string
+}
+
+// GetPublicKey returns the public key for the given peer.
+func (lvs *LimitedValueStore) GetPublicKey(ctx context.Context, p peer.ID) (ci.PubKey, error) {
+	for _, ns := range lvs.Namespaces {
+		if ns == "pk" {
+			return routing.GetPublicKey(lvs.ValueStore, ctx, p)
+		}
+	}
+	return nil, routing.ErrNotSupported
+}
+
+// PutValue returns ErrNotSupported
+func (lvs *LimitedValueStore) PutValue(ctx context.Context, key string, value []byte, opts ...ropts.Option) error {
+	if !lvs.KeySupported(key) {
+		return routing.ErrNotSupported
+	}
+	return lvs.ValueStore.PutValue(ctx, key, value, opts...)
+}
+
+// KeySupported returns true if the passed key is supported by this value store.
+func (lvs *LimitedValueStore) KeySupported(key string) bool {
+	if len(key) < 3 {
+		return false
+	}
+	if key[0] != '/' {
+		return false
+	}
+	key = key[1:]
+	for _, ns := range lvs.Namespaces {
+		if len(ns) < len(key) && strings.HasPrefix(key, ns) && key[len(ns)] == '/' {
+			return true
+		}
+	}
+	return false
+}
+
+// GetValue returns ErrNotSupported
+func (lvs *LimitedValueStore) GetValue(ctx context.Context, key string, opts ...ropts.Option) ([]byte, error) {
+	if !lvs.KeySupported(key) {
+		return nil, routing.ErrNotSupported
+	}
+	return lvs.ValueStore.GetValue(ctx, key, opts...)
+}
+
+var _ routing.PubKeyFetcher = (*LimitedValueStore)(nil)
+var _ routing.ValueStore = (*LimitedValueStore)(nil)

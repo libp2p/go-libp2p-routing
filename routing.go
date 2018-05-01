@@ -61,9 +61,10 @@ type ValueStore interface {
 	//SearchValue(context.Context, string, ...ropts.Option) (<-chan []byte, error)
 }
 
-// Bootstrap allows callers to hint to the routing system to get into a
+// BootstrapRouting allows callers to hint to the routing system to get into a
 // Boostrapped state
 type BootstrapRouting interface {
+	// Bootstrap the router.
 	Bootstrap(context.Context) error
 }
 
@@ -79,28 +80,46 @@ type IpfsRouting interface {
 	// TODO expose io.Closer or plain-old Close error
 }
 
+// PubKeyFetcher is an interfaces that should be implemented by value stores
+// that can optimize retrieval of public keys.
+//
+// TODO(steb): Consider removing, see #22.
 type PubKeyFetcher interface {
+	// GetPublicKey returns the public key for the given peer.
 	GetPublicKey(context.Context, peer.ID) (ci.PubKey, error)
 }
 
 // KeyForPublicKey returns the key used to retrieve public keys
-// from the dht.
+// from a value store.
 func KeyForPublicKey(id peer.ID) string {
 	return "/pk/" + string(id)
 }
 
-func GetPublicKey(r ValueStore, ctx context.Context, pkhash []byte) (ci.PubKey, error) {
+// GetPublicKey retrieves the public key associated with the given peer ID from
+// the value store.
+//
+// If the ValueStore is also a PubKeyFetcher, this method will call GetPublicKey
+// (which may be better optimized) instead of GetValue.
+func GetPublicKey(r ValueStore, ctx context.Context, p peer.ID) (ci.PubKey, error) {
+	k, err := p.ExtractPublicKey()
+	if err != nil {
+		// An error means that the peer ID is invalid.
+		return nil, err
+	}
+	if k != nil {
+		return k, nil
+	}
+
 	if dht, ok := r.(PubKeyFetcher); ok {
 		// If we have a DHT as our routing system, use optimized fetcher
-		return dht.GetPublicKey(ctx, peer.ID(pkhash))
-	} else {
-		key := "/pk/" + string(pkhash)
-		pkval, err := r.GetValue(ctx, key)
-		if err != nil {
-			return nil, err
-		}
-
-		// get PublicKey from node.Data
-		return ci.UnmarshalPublicKey(pkval)
+		return dht.GetPublicKey(ctx, p)
 	}
+	key := KeyForPublicKey(p)
+	pkval, err := r.GetValue(ctx, key)
+	if err != nil {
+		return nil, err
+	}
+
+	// get PublicKey from node.Data
+	return ci.UnmarshalPublicKey(pkval)
 }
