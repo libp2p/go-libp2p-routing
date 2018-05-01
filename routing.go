@@ -18,7 +18,7 @@ var ErrNotFound = errors.New("routing: not found")
 
 // ErrNotSupported is returned when a search or put fails because the key type
 // isn't supported.
-var ErrNotSupported = errors.New("routing: namespace not supported")
+var ErrNotSupported = errors.New("routing: operation or key not supported")
 
 // ContentRouting is a value provider layer of indirection. It is used to find
 // information about who has what content.
