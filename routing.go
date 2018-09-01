@@ -57,6 +57,9 @@ type ValueStore interface {
 	//
 	// Useful when you want a result *now* but still want to hear about
 	// better/newer results.
+	//
+	// Implementations of this methods won't return ErrNotFound. When a value
+	// couldn't be found, the channel will get closed without passing any results
 	SearchValue(context.Context, string, ...ropts.Option) (<-chan []byte, error)
 }
 
