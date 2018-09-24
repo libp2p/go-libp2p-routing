@@ -37,6 +37,6 @@
   "license": "MIT",
   "name": "go-libp2p-routing",
   "releaseCmd": "git commit -a -m \"gx publish $VERSION\"",
-  "version": "2.5.0"
+  "version": "2.6.0"
 }
 
