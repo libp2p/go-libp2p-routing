@@ -88,12 +88,12 @@ func PublishQueryEvent(ctx context.Context, ev *QueryEvent) {
 }
 
 func (qe *QueryEvent) MarshalJSON() ([]byte, error) {
-	out := make(map[string]interface{})
-	out["ID"] = peer.IDB58Encode(qe.ID)
-	out["Type"] = int(qe.Type)
-	out["Responses"] = qe.Responses
-	out["Extra"] = qe.Extra
-	return json.Marshal(out)
+	return json.Marshal(map[string]interface{}{
+		"ID":        peer.IDB58Encode(qe.ID),
+		"Type":      int(qe.Type),
+		"Responses": qe.Responses,
+		"Extra":     qe.Extra,
+	})
 }
 
 func (qe *QueryEvent) UnmarshalJSON(b []byte) error {
