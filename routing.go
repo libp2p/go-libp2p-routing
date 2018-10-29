@@ -7,10 +7,10 @@ import (
 
 	ropts "github.com/libp2p/go-libp2p-routing/options"
 
-	cid "github.com/ipfs/go-cid"
 	ci "github.com/libp2p/go-libp2p-crypto"
 	peer "github.com/libp2p/go-libp2p-peer"
 	pstore "github.com/libp2p/go-libp2p-peerstore"
+	mh "github.com/multiformats/go-multihash"
 )
 
 // ErrNotFound is returned when the router fails to find the requested record.
@@ -26,10 +26,10 @@ type ContentRouting interface {
 	// Provide adds the given cid to the content routing system. If 'true' is
 	// passed, it also announces it, otherwise it is just kept in the local
 	// accounting of which objects are being provided.
-	Provide(context.Context, cid.Cid, bool) error
+	Provide(context.Context, mh.Multihash, bool) error
 
 	// Search for peers who are able to provide a given key
-	FindProvidersAsync(context.Context, cid.Cid, int) <-chan pstore.PeerInfo
+	FindProvidersAsync(context.Context, mh.Multihash, int) <-chan pstore.PeerInfo
 }
 
 // PeerRouting is a way to find information about certain peers.
