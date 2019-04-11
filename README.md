@@ -24,3 +24,7 @@ This repository falls under the IPFS [Code of Conduct](https://github.com/ipfs/c
 ## License
 
 MIT
+
+---
+
+The last gx published version of this module was: 2.7.13: QmYxUdYY9S6yg5tSPVin5GFTvtfsLauVcr7reHDD3dM8xf
