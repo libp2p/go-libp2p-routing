@@ -1,8 +1,5 @@
 module github.com/libp2p/go-libp2p-routing
 
-require (
-	github.com/ipfs/go-cid v0.0.1
-	github.com/libp2p/go-libp2p-crypto v0.0.1
-	github.com/libp2p/go-libp2p-peer v0.0.1
-	github.com/libp2p/go-libp2p-peerstore v0.0.1
-)
+go 1.12
+
+require github.com/libp2p/go-libp2p-core v0.0.0-20190416150442-54a1b70f07da
