@@ -1,6 +1,10 @@
 package notifications
 
-import moved "github.com/libp2p/go-libp2p-core/routing/notifications"
+import (
+	"context"
+
+	moved "github.com/libp2p/go-libp2p-core/routing/notifications"
+)
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.QueryEventType instead.
 type QueryEventType = moved.QueryEventType
@@ -33,7 +37,11 @@ const (
 type QueryEvent = moved.QueryEvent
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.RegisterForQueryEvents instead.
-var RegisterForQueryEvents = moved.RegisterForQueryEvents
+func RegisterForQueryEvents(ctx context.Context) (context.Context, <-chan *moved.QueryEvent) {
+	return moved.RegisterForQueryEvents(ctx)
+}
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.PublishQueryEvent instead.
-var PublishQueryEvent = moved.PublishQueryEvent
+func PublishQueryEvent(ctx context.Context, ev *moved.QueryEvent) {
+	moved.PublishQueryEvent(ctx, ev)
+}
