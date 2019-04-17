@@ -3,7 +3,7 @@ package notifications
 import (
 	"context"
 
-	moved "github.com/libp2p/go-libp2p-core/routing/notifications"
+	moved "github.com/libp2p/go-libp2p-core/routing"
 )
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.QueryEventType instead.

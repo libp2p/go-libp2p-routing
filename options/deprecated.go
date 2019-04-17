@@ -1,6 +1,6 @@
 package ropts
 
-import moved "github.com/libp2p/go-libp2p-core/routing/options"
+import moved "github.com/libp2p/go-libp2p-core/routing"
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/options.Option instead.
 type Option = moved.Option
