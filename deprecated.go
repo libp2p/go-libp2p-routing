@@ -5,37 +5,37 @@ import (
 	"context"
 
 	"github.com/libp2p/go-libp2p-core/peer"
-	moved "github.com/libp2p/go-libp2p-core/routing"
+	core "github.com/libp2p/go-libp2p-core/routing"
 	ci "github.com/libp2p/go-libp2p-crypto"
 )
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.ErrNotFound instead.
-var ErrNotFound = moved.ErrNotFound
+var ErrNotFound = core.ErrNotFound
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.ErrNotSupported instead.
-var ErrNotSupported = moved.ErrNotSupported
+var ErrNotSupported = core.ErrNotSupported
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.ContentRouting instead.
-type ContentRouting = moved.ContentRouting
+type ContentRouting = core.ContentRouting
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.PeerRouting instead.
-type PeerRouting = moved.PeerRouting
+type PeerRouting = core.PeerRouting
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.ValueStore instead.
-type ValueStore = moved.ValueStore
+type ValueStore = core.ValueStore
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.Routing instead.
-type IpfsRouting = moved.Routing
+type IpfsRouting = core.Routing
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.PubKeyFetcher instead.
-type PubKeyFetcher = moved.PubKeyFetcher
+type PubKeyFetcher = core.PubKeyFetcher
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.KeyForPublicKey instead.
 func KeyForPublicKey(id peer.ID) string {
-	return moved.KeyForPublicKey(id)
+	return core.KeyForPublicKey(id)
 }
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.GetPublicKey instead.
-func GetPublicKey(r moved.ValueStore, ctx context.Context, p peer.ID) (ci.PubKey, error) {
-	return moved.GetPublicKey(r, ctx, p)
+func GetPublicKey(r core.ValueStore, ctx context.Context, p peer.ID) (ci.PubKey, error) {
+	return core.GetPublicKey(r, ctx, p)
 }

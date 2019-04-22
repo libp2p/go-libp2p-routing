@@ -1,15 +1,15 @@
 package ropts
 
-import moved "github.com/libp2p/go-libp2p-core/routing"
+import core "github.com/libp2p/go-libp2p-core/routing"
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/options.Option instead.
-type Option = moved.Option
+type Option = core.Option
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/options.Options instead.
-type Options = moved.Options
+type Options = core.Options
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/options.Expired instead.
-var Expired = moved.Expired
+var Expired = core.Expired
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/options.Offline instead.
-var Offline = moved.Offline
+var Offline = core.Offline

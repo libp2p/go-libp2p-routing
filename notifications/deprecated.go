@@ -3,45 +3,45 @@ package notifications
 import (
 	"context"
 
-	moved "github.com/libp2p/go-libp2p-core/routing"
+	core "github.com/libp2p/go-libp2p-core/routing"
 )
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.QueryEventType instead.
-type QueryEventType = moved.QueryEventType
+type QueryEventType = core.QueryEventType
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.QueryEventBufferSize instead.
 // Warning: it's impossible to alias a var in go, so reads and writes to this variable may be inaccurate
 // or not have the intended effect.
-var QueryEventBufferSize = moved.QueryEventBufferSize
+var QueryEventBufferSize = core.QueryEventBufferSize
 
 const (
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.SendingQuery instead.
-	SendingQuery = moved.SendingQuery
+	SendingQuery = core.SendingQuery
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.PeerResponse instead.
-	PeerResponse = moved.PeerResponse
+	PeerResponse = core.PeerResponse
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.FinalPeer instead.
-	FinalPeer = moved.FinalPeer
+	FinalPeer = core.FinalPeer
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.QueryError instead.
-	QueryError = moved.QueryError
+	QueryError = core.QueryError
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.Provider instead.
-	Provider = moved.Provider
+	Provider = core.Provider
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.Value instead.
-	Value = moved.Value
+	Value = core.Value
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.AddingPeer instead.
-	AddingPeer = moved.AddingPeer
+	AddingPeer = core.AddingPeer
 	// Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.DialingPeer instead.
-	DialingPeer = moved.DialingPeer
+	DialingPeer = core.DialingPeer
 )
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.QueryEvent instead.
-type QueryEvent = moved.QueryEvent
+type QueryEvent = core.QueryEvent
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.RegisterForQueryEvents instead.
-func RegisterForQueryEvents(ctx context.Context) (context.Context, <-chan *moved.QueryEvent) {
-	return moved.RegisterForQueryEvents(ctx)
+func RegisterForQueryEvents(ctx context.Context) (context.Context, <-chan *core.QueryEvent) {
+	return core.RegisterForQueryEvents(ctx)
 }
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing/notifications.PublishQueryEvent instead.
-func PublishQueryEvent(ctx context.Context, ev *moved.QueryEvent) {
-	moved.PublishQueryEvent(ctx, ev)
+func PublishQueryEvent(ctx context.Context, ev *core.QueryEvent) {
+	core.PublishQueryEvent(ctx, ev)
 }
