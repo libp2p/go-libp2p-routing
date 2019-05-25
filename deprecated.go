@@ -1,12 +1,13 @@
-// package routing defines the interface for a routing system used by ipfs.
+// Deprecated: use github.com/libp2p/go-libp2p-core/routing instead.
 package routing
 
 import (
 	"context"
 
+	ci "github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/peer"
+
 	core "github.com/libp2p/go-libp2p-core/routing"
-	ci "github.com/libp2p/go-libp2p-crypto"
 )
 
 // Deprecated: use github.com/libp2p/go-libp2p-core/routing.ErrNotFound instead.
